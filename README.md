@@ -6,10 +6,11 @@ A Node.js + Express REST API that simulates the MTN Mobile Money . Built as a po
 
 
 ---
----
 ## Video Demo
 
 [Watch the Loom Video](https://www.loom.com/share/b34cf31d3825401dacb1e5976443eb2f)
+---
+
 ## Quick Start
 
 ```bash
