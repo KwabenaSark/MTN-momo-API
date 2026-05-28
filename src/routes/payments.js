@@ -5,12 +5,15 @@ const { rbac } = require("../middleware/rbac");
 const { idempotency } = require("../middleware/idempotency");
 const { initiatePayment, initiateRefund } = require("../services/momoService");
 const { transactions } = require("../store");
+require('dotenv').config();
 
 const router = express.Router();
 
 // ─── Validation helpers ───────────────────────────────────────────────────────
 
-const phoneRegex = /^(\+?233|0)\d{9}$/;
+const phoneRegex = /^\d{11,13}$/;
+
+const sandboxPhoneRegex = /^\d{8,15}$/; // permissive for sandbox test numbers
 
 const paymentValidation = [
   body("amount")
@@ -21,8 +24,8 @@ const paymentValidation = [
     .isIn(["GHS", "USD", "EUR"])
     .withMessage("currency must be GHS, USD, or EUR"),
   body("phoneNumber")
-    .matches(phoneRegex)
-    .withMessage("phoneNumber must be a valid Ghana mobile number (e.g. 0241234567 or +233241234567)"),
+    .matches(process.env.NODE_ENV === "production" ? phoneRegex : sandboxPhoneRegex)
+    .withMessage("phoneNumber must be a valid mobile number"),
   body("description").optional().isString().isLength({ max: 256 }),
   body("reference").optional().isString().isLength({ max: 64 }),
 ];

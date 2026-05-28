@@ -1,9 +1,13 @@
 # MoMo Payment Gateway Simulation API
 
-A Node.js + Express REST API that simulates the MTN Mobile Money / Vodafone Cash integration pattern used across West Africa. Built as a portfolio demonstration of production-grade backend engineering for payment systems.
+A Node.js + Express REST API that simulates the MTN Mobile Money . Built as a portfolio demonstration of production-grade backend engineering for payment systems.
 
 ---
 
+
+---
+## Video Demo
+https://www.loom.com/share/b34cf31d3825401dacb1e5976443eb2f
 ## Quick Start
 
 ```bash

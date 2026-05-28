@@ -97,8 +97,8 @@ async function initiateRefund({ transactionId, merchantId, reason }) {
 
 function detectProvider(phoneNumber) {
   const cleaned = phoneNumber.replace(/\D/g, "");
-  // Target sandbox test numbers or typical Ghana network prefixes
-  if (cleaned === "46733123453" || /^(024|054|055|059)/.test(cleaned) || /^(23324|23354|23355|23359)/.test(cleaned)) {
+
+  if (/^(024|054|055|059)/.test(cleaned) || /^(23324|23354|23355|23359)/.test(cleaned)) {
     return "MTN_MOMO";
   }
   if (/^(020|050)/.test(cleaned) || /^(23320|23350)/.test(cleaned)) {
